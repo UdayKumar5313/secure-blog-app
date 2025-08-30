@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnerable Blog</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2em auto; color: #333; }
+        .post { border: 1px solid #ddd; border-radius: 5px; padding: 1em; margin-bottom: 1em; }
+        .search-bar { margin-bottom: 2em; }
+        input[type="text"] { padding: 8px; width: 300px; }
+        button { padding: 8px 12px; }
+    </style>
+</head>
+<body>
+    <h1>My Insecure Blog</h1>
+    
+    <div class="search-bar">
+        <form action="/" method="GET">
+            <input type="text" name="search" placeholder="Search posts by title...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h2>Posts</h2>
+    {% for post in posts %}
+        <div class="post">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+        </div>
+    {% else %}
+        <p>No posts found.</p>
+    {% endfor %}
+
+</body>
+</html>
